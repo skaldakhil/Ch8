@@ -2,12 +2,15 @@
 #include <iostream>
 #include <spreadSheetCell.hpp>
 
-// void printCell(const spreadSheetCell& cell) {
-//     std::cout << cell.getString() << std::endl;
-// }
+spreadSheetCell::spreadSheetCell(std::string_view initialValue) {
+    setString(initialValue);
+}
+
+spreadSheetCell::spreadSheetCell(double initialValue) {
+    setValue(initialValue);
+}
 
 void spreadSheetCell::setValue(double value) {
-    // printCell(*this);
     m_value = value;
 }
 
@@ -24,7 +27,7 @@ void spreadSheetCell::setString(std::string_view value) {
 }
 
 double spreadSheetCell::stringToDouble (std::string_view value) const {
-    int number{ 0 };
+    double number{0};
 	std::from_chars(value.data(), value.data() + value.size(), number);
 	return number;
 }
